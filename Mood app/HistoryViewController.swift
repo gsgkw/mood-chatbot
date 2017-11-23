@@ -10,7 +10,7 @@ import UIKit
 
 class HistoryViewController: UIViewController {
     
-    var moodLog = [moodObject]()
+    var moodLog = [Mood]()
 
     @IBAction func hello(_ sender: Any) {
         for mood in moodLog{

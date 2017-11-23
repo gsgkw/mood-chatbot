@@ -17,15 +17,15 @@ class ViewController: UIViewController {
     }
     
     
-    
-    var moodLog = [moodObject]()
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let historyVC: HistoryViewController = segue.destination
-            as! HistoryViewController
-        
-        historyVC.moodLog = moodLog
-    }
+//
+    var moodLog = [Mood]()
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let MoodTableVC: MoodTableTableViewController = segue.destination
+//            as! MoodTableTableViewController
+//
+//        MoodTableVC.moodLog = moodLog
+//    }
     
     @IBOutlet weak var message: UILabel!
     
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     }
     
     func addMood(inputNumber: Int){
-        moodLog.append(moodObject(inputdate: Date(),inputmood: inputNumber))
+        moodLog.append(Mood(inputdate: Date(),inputmood: inputNumber))
     }
     
     func messageDisplay(number: String) {

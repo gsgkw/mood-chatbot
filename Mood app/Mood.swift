@@ -8,7 +8,7 @@
 
 import Foundation
 
-class moodObject {
+class Mood {
     let date: Date
     let mood: Int
     

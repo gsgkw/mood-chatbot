@@ -9,17 +9,23 @@
 import UIKit
 
 class MoodTableTableViewController: UITableViewController {
-
+    var moodLog = [Mood]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        // load sample data.
+        loadSampleMoods()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+       // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
     }
-
+    
+  
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,24 +35,30 @@ class MoodTableTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return moodLog.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        let cellIdentifier = "MoodTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MoodTableViewCell else{
+            fatalError("the queued cell is not an instance of MoodTableViewCell")
+        }
 
         // Configure the cell...
+        let mood = moodLog[indexPath.row]
+        cell.moodLabel.text = String(mood.mood)
+        cell.dateLabel.text = String(describing: mood.date)
+        
 
         return cell
     }
-    */
-
+ 
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -92,4 +104,16 @@ class MoodTableTableViewController: UITableViewController {
     }
     */
 
+    private func loadSampleMoods(){
+        let mood1 = Mood(inputdate: Date(), inputmood: 3)
+        let mood2 = Mood(inputdate: Date(), inputmood: 1)
+        let mood3 = Mood(inputdate: Date(), inputmood: 5)
+        moodLog += [mood1, mood2, mood3]
+        print (moodLog.count)
+    }
+    
+    
+    
+    
+    
 }
